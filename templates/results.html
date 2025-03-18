@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Details</title>
+</head>
+<body>
+    <h2>Resume Details</h2>
+
+    <button onclick="showSection('all')">Show Full Resume</button>
+    <button onclick="showSection('Education')">Education</button>
+    <button onclick="showSection('Experience')">Experience</button>
+    <button onclick="showSection('Projects')">Projects</button>
+    <button onclick="showSection('Skills')">Skills</button>
+
+    <h3>Resume Content</h3>
+    <div id="resume-content">
+        <pre>{{ resume_text }}</pre>
+    </div>
+
+    <a href="{{ url_for('edit_resume') }}"><button>Edit Resume</button></a>
+
+    <script>
+        function showSection(section) {
+            let sections = JSON.parse('{{ resume_sections | tojson | safe }}');
+            let contentDiv = document.getElementById("resume-content");
+
+            if (section === 'all') {
+                contentDiv.innerHTML = `<pre>{{ resume_text }}</pre>`;
+            } else {
+                contentDiv.innerHTML = `<pre>${sections[section] || "No data found"}</pre>`;
+            }
+        }
+    </script>
+</body>
+</html>

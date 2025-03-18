@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Resume</title>
+    <script>
+        function saveChanges(section) {
+            const content = document.getElementById(section).value;
+            
+            fetch("/edit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ section: section, content: content })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>Edit Resume Sections</h2>
+    {% for section, content in resume_sections.items() %}
+        <h3>{{ section }}</h3>
+        <textarea id="{{ section }}" rows="5" cols="50">{{ content }}</textarea>
+        <br>
+        <button onclick="saveChanges('{{ section }}')">Save Changes</button>
+        <hr>
+    {% endfor %}
+</body>
+</html>

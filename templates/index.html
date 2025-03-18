@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resume Analyzer</h1>
+        </header>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="upload-section">
+                    <h2>Upload Resume</h2>
+                    <div class="upload-area" id="upload-area">
+                        <i class="fas fa-file-upload"></i>
+                        <p>Drag & drop your resume here<br>or click to browse</p>
+                        <input type="file" id="file-input" accept=".pdf,.png,.jpg,.jpeg">
+                    </div>
+                    <div class="file-info" id="file-info"></div>
+                </div>
+                
+                <div class="section-nav">
+                    <h2>Sections</h2>
+                    <ul id="section-list">
+                        <li data-section="all" class="active">All Sections</li>
+                        <li data-section="Education">Education</li>
+                        <li data-section="Experience">Experience</li>
+                        <li data-section="Projects">Projects</li>
+                        <li data-section="Skills">Skills</li>
+                        <li data-section="Other">Other</li>
+                    </ul>
+                </div>
+                
+                <div class="search-section">
+                    <h2>Search</h2>
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Enter keywords...">
+                        <button id="search-button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <div class="content-header">
+                    <h2 id="content-title">Upload a resume to start</h2>
+                    <div class="actions">
+                        <button id="edit-button" disabled><i class="fas fa-edit"></i> Edit</button>
+                        <button id="save-button" disabled><i class="fas fa-save"></i> Save</button>
+                        <button id="cancel-button" disabled><i class="fas fa-times"></i> Cancel</button>
+                    </div>
+                </div>
+                
+                <div class="content-body">
+                    <div id="view-content" class="view-content">
+                        <p>Please upload a resume to analyze its content.</p>
+                    </div>
+                    <div id="edit-content" class="edit-content">
+                        <textarea id="edit-textarea"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div id="status-bar">Ready. Please upload a resume.</div>
+        </footer>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
